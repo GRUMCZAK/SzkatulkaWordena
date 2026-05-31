@@ -51,7 +51,7 @@ print("[+] Connection established")
 ack = response[TCP].ack
 
 while True:
-    sniff(filter = f"tcp and dst port {SRC_PORT}", count = 1, store = 0)
+    sniff(filter = f"tcp and dst port {SRC_PORT}", prn=insert_pkt, count = 1, store = 0)
     print("odebrano")
     print(response.show())
     data = input()
@@ -62,7 +62,7 @@ while True:
             dport = DST_PORT,
             seq = server_seq,
             ack = ack
-        ), 
+        ) /
         data.encode(),
         verbose=0
     )

@@ -73,6 +73,6 @@ while True:
         verbose=0
     )
     client_seq += len(data)
-    sniff(filter = f"tcp and dst port {SRC_PORT}", count = 1, store = 0 )
+    sniff(filter = f"tcp and dst port {SRC_PORT}", prn=insert_pkt, count = 1, store = 0 )
     ack = response[TCP].ack
-    print(response)
+    print(response.show())
